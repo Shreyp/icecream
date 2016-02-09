@@ -15,47 +15,24 @@ var icecreams = [
   {name: 'jawbreakers', price: 6, awesomeness: 2}, 
 ];
 
-app.get('/vanilla', function(req,res) {
-  var data = {
-    name: icecreams[0].name,
-    price: icecreams[0].price,
-    awesomeness: icecreams[0].awesomeness
+app.get('/:flavor', function(req,res) {
+  var flavor = req.params.flavor;
+  var i;
+  if (flavor === "vanilla"){
+    i=0
+  }else if (flavor === "chocolate"){
+    i=1
+  }else if (flavor === "banana"){
+    i=2
+  }else if (flavor === "greentea"){
+    i=3
+  }else if (flavor === "jawbreakers"){
+    i=4
   }
-  res.render('icecream', data);
-});
-
-app.get('/chocolate', function(req,res) {
   var data = {
-    name: icecreams[1].name,
-    price: icecreams[1].price,
-    awesomeness: icecreams[1].awesomeness
-  }
-  res.render('icecream', data);
-});
-
-app.get('/banana', function(req,res) {
-  var data = {
-    name: icecreams[2].name,
-    price: icecreams[2].price,
-    awesomeness: icecreams[2].awesomeness
-  }
-  res.render('icecream', data);
-});
-
-app.get('/greentea', function(req,res) {
-  var data = {
-    name: icecreams[3].name,
-    price: icecreams[3].price,
-    awesomeness: icecreams[3].awesomeness
-  }
-  res.render('icecream', data);
-});
-
-app.get('/jawbreakers', function(req,res) {
-  var data = {
-    name: icecreams[4].name,
-    price: icecreams[4].price,
-    awesomeness: icecreams[4].awesomeness
+    name: icecreams[i].name,
+    price: icecreams[i].price,
+    awesomeness: icecreams[i].awesomeness
   }
   res.render('icecream', data);
 });
